@@ -1,0 +1,19 @@
+O implements Serializable - É uma serialização que converter os objetos em bytes e isso torna mais facil o armazenamento de um arquivo, transmito na rede ou em banco de dados.
+
+@Entity - para informar que é uma entidade
+@Table para criar a tabela no banco de dados
+@Id - para informar que se trata de um id
+
+@GeneratedValue - indica que a chave primaria será criada pelo spring jpa.
+O parametro strategy  é para dizer que a chave primaria será gerada e a A estratégia GenerationType.IDENTITY indica que a Chave Primária será gerada pelo Banco de dados através da opção auto-incremento.
+
+@NotNull - para dizer que o atributo não pode ser nulo
+@Size - para informar o tamanho
+@NotBlank - para dizer que o atributo não pode ser nulo, vazio ou branco
+
+@@UpdateTimestamp coloca o atributo como Timestamp e o spring será o responsavel por obter a hora/data do sistema operacional toda vez que um objeto será criado
+
+getters and setter para acessar e modificar os objetos pois usamos o modificador de acesso private.
+
+
+

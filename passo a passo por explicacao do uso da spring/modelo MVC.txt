@@ -1,0 +1,5 @@
+Model: Camada responsável pela abstração dos nossos Objetos em registros das nossas tabelas, que serão geradas no Banco de dados. As Classes criadas nesta camada representam os objetos que serão persistidos no Banco de dados.
+
+Repository: Camada responsável por implementar as Interfaces, que contém diversos Métodos pré-implementados para a manipulação de dados de uma entidade, como Métodos para salvar, deletar, listar e recuperar dados da Classe. Para criar estas Interfaces basta Herdar (extends) a Interface JpaRepository.
+
+Controller: Camada responsável por receber todas as Requisições HTTP (HTTP Request), enviadas por um Cliente HTTP (Postman ou o Front-end da API), para a nossa aplicação e responder (HTTP Response) as requisições de acordo com o resultado do processamento da requisição no Back-end.

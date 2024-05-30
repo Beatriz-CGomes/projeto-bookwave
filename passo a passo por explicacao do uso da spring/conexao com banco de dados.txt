@@ -1,0 +1,25 @@
+ -- spring.jpa.hibernate.ddl-auto - Defini que o JPA irá inicializar o banco de dados
+update = fará uma atualização no banco criado e não irá excluir.
+
+-- spring.jpa.database - Defimo que o banco utilizado será o mysql
+
+-- spring.datasource.url - defini a conexão com banco de dados
+
+jdbc:mysql://localhost/bookwave ⇨ endereço (jdbc:mysql://localhost/) + nome do Banco (db_blogpessoal)
+
+?createDatabaseIfNotExist=true ⇨ criar automaticamente o Banco de dados no MySQL caso ele não exista (true)
+
+&serverTimezone=America/Sao_Paulo ⇨ define o fuso horario do servidor MySQL (America/Sao_Paulo)
+
+&useSSl=false ⇨ desabilita a camada de segurança da conexão com o MySQL (SSL)
+
+-- spring.datasource.username - Define o usuário do MySQL (root)
+-- spring.datasource.password - Define a senha do usuário do MySQL (root)
+
+-- spring.jpa.show-sql -- Exibe todas as Queries SQL no Console do STS durante a execução da aplicação
+
+-- spring.jpa.properties.hibernate.dialect -- Configura a versão do MySQL, em nosso projeto estamos utilizando a versão 8 (org.hibernate.dialect.MySQL8Dialect).
+
+-- spring.jackson.date-forma - Configura o formato da Data (yyyy-MM-dd) e da Hora (HH:mm:ss) da aplicação
+
+-- spring.jackson.time-zone -- Configura o fuso horario do servidor da aplicação (Brazil/East)

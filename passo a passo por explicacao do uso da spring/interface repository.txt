@@ -1,0 +1,3 @@
+@Repository - para mostrar que se trata de uma interface repository.
+
+extends JpaRepository - para poder ter acesso a toda pre-implementação do crud através da JPA é um generico e precisa passar seu tipo ,,
