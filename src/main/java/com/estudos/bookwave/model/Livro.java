@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -47,6 +48,10 @@ public class Livro implements Serializable {
 
 	@Size(min = 20, max = 5000, message = "esse atributo tem como 20 e 5000 caracteres")
 	private String foto;
+
+	// associação entre tabelas
+	@ManyToOne
+	private Genero genero;
 
 	// getterd and setters
 	public Long getId() {
@@ -111,6 +116,14 @@ public class Livro implements Serializable {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public void setGenero(Genero genero) {
+		this.genero = genero;
 	}
 
 }
