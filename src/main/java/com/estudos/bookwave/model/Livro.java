@@ -118,12 +118,13 @@ public class Livro implements Serializable {
 		this.foto = foto;
 	}
 
+	
 	public Genero getGenero() {
 		return genero;
 	}
 
 	public void setGenero(Genero genero) {
 		this.genero = genero;
-	}
+	} 
 
 }

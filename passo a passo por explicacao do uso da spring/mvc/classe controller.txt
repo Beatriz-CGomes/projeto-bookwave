@@ -1,0 +1,31 @@
+@RestController - para indicar que é a controller que vai ter a interação com banco de dados
+
+@RequestMapping é para passar o caminho na url para mapear as solicitações dos metados que vamos criar a baixo
+
+@CrossOrigin - indica que essa classe pode receber requisiçõs realizadas fora do dominio, sendo usada principalmente para o nosso front-end.
+
+origins - é para liberar todas as origins de requisições
+a anotacao allowedHeaders no parametro é para trazer todas as informações corretas para o uso da aplicação e como pretendemos usar um token esse recurso é bom.
+
+@Autowired - injeção de depedencia utilizada pelo Spring para aplicar a inversão de controler quando necessário. A injeção de depedencia defini quais classes serão instanciadas e em quais lugares serão injetadas quando houver necessidade.
+
+____________________
+
+passamos em cima do metado quais requisições queremos realizar
+
+@GetMapping - para obter
+@PostMapping - para inserir 
+@PutMapping - para atualizar
+@Delete - para deletar
+
+
+_______________________
+METADO getAll 
+- ResponseEntity: usamos esse tipo por se tratar de uma requisição HTTP
+- Usamos uma Lista porque queremos obter todos os livros cadastrados no sistema
+- Como usamos o tipo ResponseEntity - precisamos retornar o mesmo tipo com .ok que será um HTTP response 200 que foi criado passamo no corpo um objeto da nossa lista
+
+@PageableDefault(size = 10, page = 0, sort = { "nome" }) Pageable page - mudamos para Page para poder trazer na url uma página com 10 cadastro no máximo em uma página e ordenando pelo nome.
+
+
+

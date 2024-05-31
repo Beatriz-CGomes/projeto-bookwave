@@ -1,0 +1,12 @@
+A classe service é usada para regra de negocio do banco de dados e chamamos a repository que está chamando a JPA e a service é enviada para controller para controller poder ter acesso as regras do banco de dados
+
+__________________________________________
+findAll
+- Usamos uma Page pois ela é semelhante a uma lista só que diferente da lista que traz todo o objeto a page é usada para trazer resultados menores e semelhante a uma página que vc pode passar uma regra como padrão como o limite de paginação e poder trazer essa página ordenada por nome, genero ou titulo.
+
+__________________________________________
+findById
+- Usamos uma Optional pq ela trabalha com o formato de que o objeto pode ser nulo ou não ter nenhum valor associado a ele e ele não permite que o valor seja nulo e como validamos algumas regras no nosso banco de dados como @NotNull e @NotBlank
+__________________________________________
+post
+

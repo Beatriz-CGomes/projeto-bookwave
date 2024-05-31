@@ -19,29 +19,27 @@ import jakarta.validation.constraints.Size;
 public class Usuarios implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull(message = "esse atributo é obrigatorio")
 	private String nome;
-	
+
 	@NotNull(message = "esse atributo é obrigatorio")
 	@Email(message = "O atributo usuario deve ter um email valido")
 	private String usuario;
-	
-	
+
 	@NotBlank(message = "esse atributo é obrigatorio")
 	@Size(min = 8, message = "o minimo de caractere para senha é 8")
 	private String senha;
 
-	//associação entre tabelas
+	// associação entre tabelas
 	@OneToMany
 	private List<Livro> livro;
-	
-	
-	//getters and setters
+
+	// getters and setters
 	public Long getId() {
 		return id;
 	}
@@ -74,4 +72,11 @@ public class Usuarios implements Serializable {
 		this.senha = senha;
 	}
 
+	public List<Livro> getLivro() {
+		return livro;
+	}
+	
+	public void setLivro(List<Livro> livro) {
+		this.livro = livro;
+	}
 }

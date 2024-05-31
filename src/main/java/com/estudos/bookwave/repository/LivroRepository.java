@@ -6,4 +6,5 @@ import com.estudos.bookwave.model.Livro;
 
 public interface LivroRepository extends JpaRepository<Livro, Long>{
 
+	
 }
