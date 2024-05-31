@@ -3,3 +3,15 @@ Model: Camada responsável pela abstração dos nossos Objetos em registros das 
 Repository: Camada responsável por implementar as Interfaces, que contém diversos Métodos pré-implementados para a manipulação de dados de uma entidade, como Métodos para salvar, deletar, listar e recuperar dados da Classe. Para criar estas Interfaces basta Herdar (extends) a Interface JpaRepository.
 
 Controller: Camada responsável por receber todas as Requisições HTTP (HTTP Request), enviadas por um Cliente HTTP (Postman ou o Front-end da API), para a nossa aplicação e responder (HTTP Response) as requisições de acordo com o resultado do processamento da requisição no Back-end.
+
+Service: A camada de serviço é responsável por conter a lógica de negócios da nossa aplicação. Ela atua como uma ponte entre as camadas de controle e acesso a dados, garantindo que as operações de negócios sejam executadas de forma eficiente e coesa. Nas classes de serviço, são implementadas as operações complexas e específicas do domínio da aplicação, como regras de negócio, validações, processamento de dados e integração com outras APIs ou sistemas externos.
+
+RESUMO:
+
+A camada de Model;  é responsável pela abstração dos objetos em registros das tabelas do banco de dados.
+
+A camada de Repository:  implementa interfaces que contêm métodos para manipulação de dados da entidade, usando o JpaRepository do Spring Data.
+
+A camada de Controller:  recebe requisições HTTP do cliente e responde de acordo com o processamento realizado na camada de serviço.
+
+A camada de Service: contém a lógica de negócios da aplicação, atuando como uma ponte entre as camadas de controle e acesso a dados.

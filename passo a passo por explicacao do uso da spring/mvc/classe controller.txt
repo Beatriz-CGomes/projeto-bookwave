@@ -19,13 +19,42 @@ passamos em cima do metado quais requisições queremos realizar
 @Delete - para deletar
 
 
-_______________________
+____________________________________________________________________________________________
 METADO getAll 
 - ResponseEntity: usamos esse tipo por se tratar de uma requisição HTTP
 - Usamos uma Lista porque queremos obter todos os livros cadastrados no sistema
 - Como usamos o tipo ResponseEntity - precisamos retornar o mesmo tipo com .ok que será um HTTP response 200 que foi criado passamo no corpo um objeto da nossa lista
+- Mudamos para page - a page é semelhante a uma lista, mas projetadas para lidar com grande conjuntos de dados e em vez de carregar todo o resultado como uma lista a page divide o resultado em forma de página permitindo que vc navegue pelos resultados. 
 
-@PageableDefault(size = 10, page = 0, sort = { "nome" }) Pageable page - mudamos para Page para poder trazer na url uma página com 10 cadastro no máximo em uma página e ordenando pelo nome.
+@PageableDefault - é uma anotação do Spring para lidar com formato de paginação e essa anotação  e que permite que definimos valores como padrão, trabalha junto com a Pageable que passamos no parametro e definimos o tipo de navegação que desejamos.
+
+@PageableDefault(size = 10, page = 0, sort = { "nome" }) Pageable page - mudamos para Page para poder trazer na url uma página com 10 cadastro no máximo em uma página e ordenando pelo titulo.
+____________________________________________________________________________________________
+Metado getById
+
+também utilizamos a anotação GetMapping pois queremos apenas obter o resultaod da pesquisa, porém como parametro passamos o id e passamos entre {id} chaves para que ao fornecer o valor da url isso seja feita de forma bem dinamica.
+
+Também sendo do tipo ResponseEntity por se tratar de uma requisição HTTP 
+
+pasamos o @PathVariable no parametro para poder pegar o id que passamos no endpoint. Ele serve para pegar partes especificas da URL e no nosso caso o ID
+
+livroService.findById(id) - aqui estamos encontrando o objeto pelo seu id.
+
+.map (é uma optional) pois ele pode ter ou não o objeto e no nosso contexto queremos evitar o erro de objeto nulo. E no nosso contexto o objeto não pode ser nulo então criamos uma função lambda 
+
+resposta -> que retornará um objeto caso ele exista com o status 200 ou se não ele retornará um status não encontrado. 
+
+.map(resposta -> ResponseEntity.ok(resposta) - essa função é para retornar o objeto encontrado pelo livroService.findById(id) e retornará um status 200. 
+
+.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND) - aqui usamos uma estrutura condicional caso o objeto seja nulo iremos passar o seu status para não encontrado ao inves de vazio.
+
+.build()  - é para finalizar a operação do ResponseEntity é comum ser usado quando configuramos o status cabeçalhos corpo da respota.
+____________________________________________________________________________________________
+Metado Post - INSERINDO NO BANCO DE DADOS
+
+
+
+
 
 
 
