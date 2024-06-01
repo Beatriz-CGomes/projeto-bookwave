@@ -26,21 +26,19 @@ public class GeneroService {
 	public Optional<Genero> findById(Long id) {
 		return generoRepository.findById(id);
 	}
-	
-	//METADO PARA BUSCAR POR GENERO
-	public List<Genero> findAllByGeneroContainingIgnoreCase(String genero){
+
+	// METADO PARA BUSCAR POR GENERO
+	public List<Genero> findAllByGeneroContainingIgnoreCase(String genero) {
 		return generoRepository.findAllByGeneroContainingIgnoreCase(genero);
 	}
-	
-	
-	//METADO PARA POSTAR GENERO
-	
-	
-	
-	//METADO PARA ATUALIZAR GENERO
-	
-	
-	
-	//METADO PARA DELETAR GENERO
+
+	// METADO PARA POSTAR GENERO
+	public Genero post(Genero genero) {
+		return generoRepository.save(genero);
+	}
+
+	// METADO PARA ATUALIZAR GENERO
+
+	// METADO PARA DELETAR GENERO
 
 }

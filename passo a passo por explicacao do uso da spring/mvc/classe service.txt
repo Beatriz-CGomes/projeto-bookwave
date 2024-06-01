@@ -8,5 +8,13 @@ __________________________________________
 findById
 - Usamos uma Optional pq ela trabalha com o formato de que o objeto pode ser nulo ou não ter nenhum valor associado a ele e ele não permite que o valor seja nulo e como validamos algumas regras no nosso banco de dados como @NotNull e @NotBlank
 __________________________________________
+Metado getAllTitulo
+Retornamos uma lista de Livros com metado que criamos lá na nossa repository pois ela é responsavél pelo banco de dados e o JPA tem somente os metados existente por ele e esse metado foi um criação nossa e retornamos o nossao metado com o objeto no corpo
+__________________________________________
 post
+Tipo  Livro recebendo o Livro livro
+e retornamos o repository.save porque é o que foi persistindo no banco de dados
 
+usamo o save para post e put pois ele garante que o objeto estará persistindo no banco de dados
+__________________________________________
+put

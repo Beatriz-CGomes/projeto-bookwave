@@ -32,4 +32,8 @@ public class LivroService {
 	public List<Livro> findAllByAutorContainingIgnoreCase(String autor) {
 		return livroRepository.findAllByAutorContainingIgnoreCase(autor);
 	}
+
+	public Livro post(Livro livro) {
+		return livroRepository.save(livro);
+	}
 }

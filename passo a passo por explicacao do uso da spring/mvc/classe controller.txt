@@ -51,10 +51,21 @@ resposta -> que retornará um objeto caso ele exista com o status 200 ou se não
 .build()  - é para finalizar a operação do ResponseEntity é comum ser usado quando configuramos o status cabeçalhos corpo da respota.
 ____________________________________________________________________________________________
 Metado Post - INSERINDO NO BANCO DE DADOS
+-Como queremos apenas passar o objeto e não trazer todo ou inserir todo em uma lista
 
+- passamos apenas o objeto deseja com parametro @valid - para poder validar nossas regras que definimos lá na model ao criar o banco de dados com as anotações @notnull, @notblank, @size e etc.
 
+@RequestBody - é necessário para extrair os dados do corpo da requisição e convertelos para o tipo de objeto java que especificamos.
+O @RequestBody é como um sinal para o Spring dizendo: "Ei, os dados que eu quero processar estão no corpo da requisição, então por favor pegue esses dados e converta-os em um objeto Java que eu possa usar no meu código."
 
+Sem o @RequestBody, o Spring espera que os dados estejam em outros lugares da requisição, como na URL para requisições GET ou nos parâmetros de formulário para requisições POST.
 
+Portanto, usar @RequestBody facilita a comunicação entre o corpo da requisição e o código Java que vai processar esses dados no servidor
+
+Passamos o Livro e objeto livro
+
+e o retorno com ResponseEntity.status(HttpStatus.CREATED) com status de creado e no corpo da requisição chamos o metado da nossa service passando o livro.
+____________________________________________________________________________________________
 
 
 

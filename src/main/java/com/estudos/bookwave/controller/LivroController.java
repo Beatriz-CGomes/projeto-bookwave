@@ -11,11 +11,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.estudos.bookwave.model.Livro;
 import com.estudos.bookwave.service.LivroService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/livros")
@@ -46,5 +50,10 @@ public class LivroController {
 	@GetMapping("/autor/{autor}")
 	public ResponseEntity<List<Livro>> findAllByAutorContainingIgnoreCase(@PathVariable String autor) {
 		return ResponseEntity.ok(livroService.findAllByAutorContainingIgnoreCase(autor));
+	}
+
+	@PostMapping
+	public ResponseEntity<Livro> post(@Valid @RequestBody Livro livro) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(livroService.post(livro));
 	}
 }

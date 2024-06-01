@@ -11,11 +11,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.estudos.bookwave.model.Genero;
 import com.estudos.bookwave.service.GeneroService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/generos")
@@ -41,5 +45,11 @@ public class GeneroController {
 	@GetMapping("/genero/{genero}")
 	public ResponseEntity<List<Genero>> findAllByGeneroContainingIgnoreCase(@PathVariable String genero) {
 		return ResponseEntity.ok(generoService.findAllByGeneroContainingIgnoreCase(genero));
+	}
+
+	@PostMapping
+	public ResponseEntity<Genero> post(@Valid @RequestBody Genero genero) {
+		genero = generoService.post(genero);
+		return ResponseEntity.status(HttpStatus.CREATED).body(genero);
 	}
 }
