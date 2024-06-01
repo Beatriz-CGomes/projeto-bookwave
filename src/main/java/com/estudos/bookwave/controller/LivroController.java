@@ -1,5 +1,7 @@
 package com.estudos.bookwave.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,5 +36,10 @@ public class LivroController {
 	public ResponseEntity<Livro> findById(@PathVariable Long id) {
 		return livroService.findById(id).map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	}
+
+	@GetMapping("/titulo/{titulo}")
+	public ResponseEntity<List<Livro>> findAllByTituloContainingIgonreCase(@PathVariable String titulo) {
+		return ResponseEntity.ok(livroService.findAllByTituloContainingIgonreCase(titulo));
 	}
 }

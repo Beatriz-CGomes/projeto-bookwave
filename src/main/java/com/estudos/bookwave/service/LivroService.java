@@ -1,5 +1,6 @@
 package com.estudos.bookwave.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class LivroService {
 	@Autowired
 	private LivroRepository livroRepository;
 
+	
 	public Page<Livro> findAll(Pageable page) {
 		return livroRepository.findAll(page);
 	}
@@ -24,4 +26,7 @@ public class LivroService {
 		return livroRepository.findById(id);
 	}
 
+	public List<Livro> findAllByTituloContainingIgonreCase(String titulo){
+		return livroRepository.findAllByTituloContainingIgnoreCase(titulo);
+	}
 }
