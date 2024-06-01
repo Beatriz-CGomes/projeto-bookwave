@@ -42,4 +42,9 @@ public class LivroController {
 	public ResponseEntity<List<Livro>> findAllByTituloContainingIgonreCase(@PathVariable String titulo) {
 		return ResponseEntity.ok(livroService.findAllByTituloContainingIgonreCase(titulo));
 	}
+
+	@GetMapping("/autor/{autor}")
+	public ResponseEntity<List<Livro>> findAllByAutorContainingIgnoreCase(@PathVariable String autor) {
+		return ResponseEntity.ok(livroService.findAllByAutorContainingIgnoreCase(autor));
+	}
 }

@@ -17,7 +17,6 @@ public class LivroService {
 	@Autowired
 	private LivroRepository livroRepository;
 
-	
 	public Page<Livro> findAll(Pageable page) {
 		return livroRepository.findAll(page);
 	}
@@ -26,7 +25,11 @@ public class LivroService {
 		return livroRepository.findById(id);
 	}
 
-	public List<Livro> findAllByTituloContainingIgonreCase(String titulo){
+	public List<Livro> findAllByTituloContainingIgonreCase(String titulo) {
 		return livroRepository.findAllByTituloContainingIgnoreCase(titulo);
+	}
+
+	public List<Livro> findAllByAutorContainingIgnoreCase(String autor) {
+		return livroRepository.findAllByAutorContainingIgnoreCase(autor);
 	}
 }

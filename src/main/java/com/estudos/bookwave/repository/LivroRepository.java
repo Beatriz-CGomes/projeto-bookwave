@@ -11,4 +11,6 @@ public interface LivroRepository extends JpaRepository<Livro, Long> {
 
 	public List<Livro> findAllByTituloContainingIgnoreCase(@Param("titulo") String titulo);
 
+	public List<Livro> findAllByAutorContainingIgnoreCase(@Param("autor") String autor);
+
 }
