@@ -66,6 +66,22 @@ Passamos o Livro e objeto livro
 
 e o retorno com ResponseEntity.status(HttpStatus.CREATED) com status de creado e no corpo da requisição chamos o metado da nossa service passando o livro.
 ____________________________________________________________________________________________
+Metado delete
 
+@DeleteMapping("/{id}") - é do tipo delete e precisa do id especifico para ser deletado
+
+O metado delete recebe um void pois não tem o que retornar após ser deletado, ele também recebe o tipo de ResponseEntity por se tratar de uma requisição HTTP
+
+passando o @PathValue com o Long id para poder rastrear o id do parametro desejado
+
+Optional é para que garante que nosso objeto não esteja nulo pois colocamos como uma regra do banco de dados, após criamos um objeto Livro e passamos a service para encontrar o id especifico do obejto.
+
+fazemos uma verificação para garantir que o livro não esteja vazio e caso o objeto não exista
+ele passa uma execeção de status não encontrado - 404
+
+caso exista o objeto ele chama a service e deleta pelo id 
+	return ResponseEntity.noContent().build();
+
+e retornamos do tipo ResponseEntity que é da nossa requisição e passamos o noContent porque se trata de uma requisição de deletar e criamos o content.
 
 

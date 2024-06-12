@@ -36,4 +36,20 @@ public class LivroService {
 	public Livro post(Livro livro) {
 		return livroRepository.save(livro);
 	}
+
+	public Livro put(Long id, Livro livro) {
+		Livro obj = livroRepository.getReferenceById(id);
+		putUpdate(livro, obj);
+		return livroRepository.save(obj);
+	}
+	
+	private void putUpdate(Livro livro, Livro obj) {
+		livro.setTitulo(obj.getTitulo());
+		livro.setAutor(obj.getAutor());
+		livro.setSinopse(obj.getSinopse());
+	}
+
+	public void delete(Long id) {
+		livroRepository.deleteById(id);
+	}
 }
