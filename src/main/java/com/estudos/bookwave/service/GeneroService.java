@@ -40,5 +40,8 @@ public class GeneroService {
 	// METADO PARA ATUALIZAR GENERO
 
 	// METADO PARA DELETAR GENERO
+	public void delete(Long id) {
+		generoRepository.deleteById(id);
+	}
 
 }
