@@ -38,15 +38,22 @@ public class LivroService {
 	}
 
 	public Livro put(Long id, Livro livro) {
-		Livro obj = livroRepository.getReferenceById(id);
-		putUpdate(livro, obj);
-		return livroRepository.save(obj);
+		Livro objLivro = livroRepository.findById(id).orElse(null);
+		if (objLivro != null) {
+			update(livro, objLivro);
+			return livroRepository.save(objLivro);
+		} else {
+			return null;
+		}
 	}
-	
-	private void putUpdate(Livro livro, Livro obj) {
-		livro.setTitulo(obj.getTitulo());
-		livro.setAutor(obj.getAutor());
-		livro.setSinopse(obj.getSinopse());
+
+	private void update(Livro novoLivro, Livro LivroCadastrado) {
+		LivroCadastrado.setTitulo(novoLivro.getTitulo());
+		LivroCadastrado.setAutor(novoLivro.getAutor());
+		LivroCadastrado.setSinopse(novoLivro.getSinopse());
+		LivroCadastrado.setPaginas(novoLivro.getPaginas());
+		LivroCadastrado.setData(novoLivro.getData());
+		LivroCadastrado.setFoto(novoLivro.getFoto());
 	}
 
 	public void delete(Long id) {

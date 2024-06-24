@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,6 +55,16 @@ public class GeneroController {
 	public ResponseEntity<Genero> post(@Valid @RequestBody Genero genero) {
 		genero = generoService.post(genero);
 		return ResponseEntity.status(HttpStatus.CREATED).body(genero);
+	}
+
+	@PutMapping("{id}")
+	public ResponseEntity<Genero> put(@Valid @RequestBody Genero genero, @PathVariable Long id) {
+		Genero novoGenero = generoService.put(genero, id);
+		if (novoGenero != null) {
+			return ResponseEntity.status(HttpStatus.OK).body(novoGenero);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
 	}
 
 	@DeleteMapping("/{id}")

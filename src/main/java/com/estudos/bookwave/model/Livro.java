@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -41,7 +43,7 @@ public class Livro implements Serializable {
 	private LocalDateTime data;
 
 	@NotNull
-	private Double preco;
+	private Integer paginas;
 
 	@NotNull
 	private Integer quantidade;
@@ -49,9 +51,15 @@ public class Livro implements Serializable {
 	@Size(min = 20, max = 5000, message = "esse atributo tem como 20 e 5000 caracteres")
 	private String foto;
 
+	
 	// associação entre tabelas
 	@ManyToOne
-	private Genero genero;
+	@JsonIgnoreProperties("livro")
+	private Genero genero; 
+	
+	@ManyToOne
+	@JsonIgnoreProperties("livro")
+	private Usuario usuario;
 
 	// getterd and setters
 	public Long getId() {
@@ -94,12 +102,12 @@ public class Livro implements Serializable {
 		this.data = data;
 	}
 
-	public Double getPreco() {
-		return preco;
+	public Integer getPaginas() {
+		return paginas;
 	}
 
-	public void setPreco(Double preco) {
-		this.preco = preco;
+	public void setPaginas(Integer paginas) {
+		this.paginas = paginas;
 	}
 
 	public Integer getQuantidade() {

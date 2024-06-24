@@ -3,6 +3,9 @@ package com.estudos.bookwave.model;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +19,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "tb_usuarios")
-public class Usuarios implements Serializable {
+public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -35,9 +38,11 @@ public class Usuarios implements Serializable {
 	@Size(min = 8, message = "o minimo de caractere para senha é 8")
 	private String senha;
 
+	
 	// associação entre tabelas
-	@OneToMany
-	private List<Livro> livro;
+	@OneToMany(mappedBy  = "usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("usuario")
+	private List<Livro> livro; 
 
 	// getters and setters
 	public Long getId() {
@@ -72,11 +77,12 @@ public class Usuarios implements Serializable {
 		this.senha = senha;
 	}
 
+	
 	public List<Livro> getLivro() {
 		return livro;
 	}
 	
 	public void setLivro(List<Livro> livro) {
 		this.livro = livro;
-	}
+	} 
 }

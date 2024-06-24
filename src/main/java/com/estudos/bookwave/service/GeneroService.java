@@ -38,6 +38,18 @@ public class GeneroService {
 	}
 
 	// METADO PARA ATUALIZAR GENERO
+	public Genero put(Genero genero, Long id) {
+		Genero objGenero = generoRepository.findById(id).orElse(null);
+		if (objGenero != null) {
+			updatePut(genero, objGenero);
+			return generoRepository.save(objGenero);
+		} else {
+			return null;
+		}
+	}
+	public void updatePut(Genero generoCadastrado, Genero novoGenero) {
+		generoCadastrado.setGenero(novoGenero.getGenero());
+	}
 
 	// METADO PARA DELETAR GENERO
 	public void delete(Long id) {
