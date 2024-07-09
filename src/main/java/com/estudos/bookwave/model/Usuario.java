@@ -38,11 +38,22 @@ public class Usuario implements Serializable {
 	@Size(min = 8, message = "o minimo de caractere para senha é 8")
 	private String senha;
 
-	
 	// associação entre tabelas
-	@OneToMany(mappedBy  = "usuario", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
-	private List<Livro> livro; 
+	private List<Livro> livro;
+
+	// construtor
+	public Usuario() {
+
+	}
+
+	public Usuario(Long id, String nome, String usuario, String senha) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+	}
 
 	// getters and setters
 	public Long getId() {
@@ -77,12 +88,11 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
-	
 	public List<Livro> getLivro() {
 		return livro;
 	}
-	
+
 	public void setLivro(List<Livro> livro) {
 		this.livro = livro;
-	} 
+	}
 }
