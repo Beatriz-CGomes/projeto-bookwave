@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.estudos.bookwave.model.Livro;
+import com.estudos.bookwave.repository.GeneroRepository;
+import com.estudos.bookwave.repository.LivroRepository;
 import com.estudos.bookwave.service.LivroService;
 
 import jakarta.validation.Valid;
@@ -32,6 +34,12 @@ public class LivroController {
 
 	@Autowired
 	private LivroService livroService;
+
+	@Autowired
+	private GeneroRepository generoRepository;
+
+	@Autowired
+	private LivroRepository livroRepository;
 
 	@GetMapping
 	public ResponseEntity<Page<Livro>> findAll(
@@ -58,17 +66,24 @@ public class LivroController {
 
 	@PostMapping
 	public ResponseEntity<Livro> post(@Valid @RequestBody Livro livro) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(livroService.post(livro));
+		if (generoRepository.existsById(livro.getGenero().getId()))
+			return ResponseEntity.status(HttpStatus.CREATED).body(livroService.post(livro));
+
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Livro> put(@Valid @RequestBody Livro livro, @PathVariable Long id) {
 		Livro novoLivro = livroService.put(id, livro);
-		if (novoLivro != null) {
-			return ResponseEntity.status(HttpStatus.OK).body(novoLivro);
-		} else {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		if (livroRepository.existsById(livro.getId())) {
+			if (generoRepository.existsById(livro.getGenero().getId()))
+				return ResponseEntity.status(HttpStatus.OK).body(novoLivro);
+
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+
 		}
+
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
 
 	@DeleteMapping("/{id}")
