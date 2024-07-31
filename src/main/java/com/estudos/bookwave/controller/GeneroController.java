@@ -35,7 +35,7 @@ public class GeneroController {
 
 	@GetMapping
 	public ResponseEntity<Page<Genero>> findAll(
-			@PageableDefault(size = 10, page = 0, sort = { "genero" }) Pageable page) {
+	@PageableDefault(size = 10, page = 0, sort = { "genero" }) Pageable page) {
 		Page<Genero> generoPage = generoService.findAll(page);
 		return ResponseEntity.ok(generoPage);
 	}
@@ -47,8 +47,8 @@ public class GeneroController {
 	}
 
 	@GetMapping("/genero/{genero}")
-	public ResponseEntity<List<Genero>> findAllByGeneroContainingIgnoreCase(@PathVariable String genero) {
-		return ResponseEntity.ok(generoService.findAllByGeneroContainingIgnoreCase(genero));
+	public ResponseEntity<List<Genero>> findByGenero(@PathVariable String genero) {
+		return ResponseEntity.ok(generoService.findByGeneroNome(genero));
 	}
 
 	@PostMapping

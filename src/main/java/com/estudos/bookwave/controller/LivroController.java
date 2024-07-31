@@ -55,13 +55,13 @@ public class LivroController {
 	}
 
 	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Livro>> findAllByTituloContainingIgonreCase(@PathVariable String titulo) {
-		return ResponseEntity.ok(livroService.findAllByTituloContainingIgonreCase(titulo));
+	public ResponseEntity<List<Livro>> findTitulo(@PathVariable String titulo) {
+		return ResponseEntity.ok(livroService.findAllPorTitulo(titulo));
 	}
 
 	@GetMapping("/autor/{autor}")
-	public ResponseEntity<List<Livro>> findAllByAutorContainingIgnoreCase(@PathVariable String autor) {
-		return ResponseEntity.ok(livroService.findAllByAutorContainingIgnoreCase(autor));
+	public ResponseEntity<List<Livro>> findAutor(@PathVariable String autor) {
+		return ResponseEntity.ok(livroService.findAllPorAutor(autor));
 	}
 
 	@PostMapping

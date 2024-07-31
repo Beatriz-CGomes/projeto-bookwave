@@ -25,8 +25,8 @@ public class Genero implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "esse atributo é obrigatorio")
-	@Size(min = 5, max = 100, message = "esse atributo tem como 5 e 100 caracteres")
+    @NotBlank(message = "Esse atributo é obrigatório")
+    @Size(min = 5, max = 100, message = "Esse atributo tem entre 5 e 100 caracteres")
 	private String genero;
 	
 	

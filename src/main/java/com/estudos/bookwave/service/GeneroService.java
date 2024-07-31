@@ -17,6 +17,7 @@ public class GeneroService {
 	@Autowired
 	private GeneroRepository generoRepository;
 
+	
 	// METADO PARA PEGAR TODOS OS GENEROS
 	public Page<Genero> findAll(Pageable page) {
 		return generoRepository.findAll(page);
@@ -28,7 +29,7 @@ public class GeneroService {
 	}
 
 	// METADO PARA BUSCAR POR GENERO
-	public List<Genero> findAllByGeneroContainingIgnoreCase(String genero) {
+	public List<Genero> findByGeneroNome(String genero) {
 		return generoRepository.findAllByGeneroContainingIgnoreCase(genero);
 	}
 
@@ -38,18 +39,16 @@ public class GeneroService {
 	}
 
 	// METADO PARA ATUALIZAR GENERO
-	public Genero put(Genero genero, Long id) {
-		Genero objGenero = generoRepository.findById(id).orElse(null);
-		if (objGenero != null) {
-			updatePut(genero, objGenero);
-			return generoRepository.save(objGenero);
-		} else {
-			return null;
-		}
-	}
-	public void updatePut(Genero generoCadastrado, Genero novoGenero) {
-		generoCadastrado.setGenero(novoGenero.getGenero());
-	}
+	 public Genero put(Genero genero, Long id) {
+	        return generoRepository.findById(id).map(existingGenero -> {
+	            updatePut(existingGenero, genero);
+	            return generoRepository.save(existingGenero);
+	        }).orElse(null);
+	    }
+
+	    private void updatePut(Genero existingGenero, Genero newGenero) {
+	        existingGenero.setGenero(newGenero.getGenero());
+	    }
 
 	// METADO PARA DELETAR GENERO
 	public void delete(Long id) {

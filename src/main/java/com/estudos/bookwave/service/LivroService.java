@@ -25,11 +25,11 @@ public class LivroService {
 		return livroRepository.findById(id);
 	}
 
-	public List<Livro> findAllByTituloContainingIgonreCase(String titulo) {
+	public List<Livro> findAllPorTitulo(String titulo) {
 		return livroRepository.findAllByTituloContainingIgnoreCase(titulo);
 	}
 
-	public List<Livro> findAllByAutorContainingIgnoreCase(String autor) {
+	public List<Livro> findAllPorAutor(String autor) {
 		return livroRepository.findAllByAutorContainingIgnoreCase(autor);
 	}
 
